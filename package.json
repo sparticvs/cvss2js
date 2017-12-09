@@ -1,0 +1,19 @@
+{
+  "name": "cvss2js",
+  "version": "1.0.0",
+  "description": "CVSSv2 Vector Calculator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sparticvs/cvss2js.git"
+  },
+  "author": "Charles `sparticvs` Timko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sparticvs/cvss2js/issues"
+  },
+  "homepage": "https://github.com/sparticvs/cvss2js#readme"
+}
