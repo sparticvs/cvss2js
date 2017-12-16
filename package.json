@@ -4,7 +4,7 @@
   "description": "CVSSv2 Vector Calculator",
   "main": "index.js",
   "scripts": {
-    "test": "node test/main.js"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/sparticvs/cvss2js/issues"
   },
-  "homepage": "https://github.com/sparticvs/cvss2js#readme"
+  "homepage": "https://github.com/sparticvs/cvss2js#readme",
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  }
 }
