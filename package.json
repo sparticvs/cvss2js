@@ -4,7 +4,7 @@
   "description": "CVSSv2 Vector Calculator",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node test/main.js"
   },
   "repository": {
     "type": "git",
