@@ -1,19 +1,22 @@
 const CVSS = require('../lib/main.js');
 const assert = require('assert');
 
+const TEST_BASE = "AV:N/AC:M/Au:N/C:P/I:P/A:P";
+const TEST_TEMP = "AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C";
+const TEST_ENV = "AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C/CDP:LM/TD:L/CR:M/IR:M/AR:L";
 
 describe('CVSS', function() {
     describe('#getScore()', function() {
-        it('should return 6.8 when given "AV:N/AC:M/Au:N/C:P/I:P/A:P"', function() {
-            assert.equal(CVSS.getScore("AV:N/AC:M/Au:N/C:P/I:P/A:P"), 6.8);
+        it('should return 6.8 when given "' + TEST_BASE + '"', function() {
+            assert.equal(CVSS.getScore(TEST_BASE), 6.8);
         });
 
-        it('should return 5.2 when given "AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C"', function() {
-            assert.equal(CVSS.getScore("AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C"), 5.2);
+        it('should return 5.2 when given "' + TEST_TEMP + '"', function() {
+            assert.equal(CVSS.getScore(TEST_TEMP), 5.2);
         });
 
-        it('should return 1.6 when given "AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C/CDP:LM/TD:L/CR:M/IR:M/AR:L"', function() {
-            assert.equal(CVSS.getScore("AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C/CDP:LM/TD:L/CR:M/IR:M/AR:L"), 1.6);
+        it('should return 1.6 when given "' + TEST_ENV + '"', function() {
+            assert.equal(CVSS.getScore(TEST_ENV), 1.6);
         });
 
         it('should throw an exception when given "AV:N/Au:N/A:P"', function() {
@@ -22,44 +25,44 @@ describe('CVSS', function() {
     });
 
     describe('#getBaseScore()', function() {
-        it('should return 6.8 when given "AV:N/AC:M/Au:N/C:P/I:P/A:P"', function() {
-            assert.equal(CVSS.getBaseScore("AV:N/AC:M/Au:N/C:P/I:P/A:P"), 6.8);
+        it('should return 6.8 when given "' + TEST_BASE + '"', function() {
+            assert.equal(CVSS.getBaseScore(TEST_BASE), 6.8);
         });
 
-        it('should return 6.8 when given "AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C"', function() {
-            assert.equal(CVSS.getBaseScore("AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C"), 6.8);
+        it('should return 5.2 when given "' + TEST_TEMP + '"', function() {
+            assert.equal(CVSS.getBaseScore(TEST_TEMP), 6.8);
         });
 
-        it('should return 6.8 when given "AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C/CDP:LM/TD:L/CR:M/IR:M/AR:L"', function() {
-            assert.equal(CVSS.getBaseScore("AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C/CDP:LM/TD:L/CR:M/IR:M/AR:L"), 6.8);
+        it('should return 1.6 when given "' + TEST_ENV + '"', function() {
+            assert.equal(CVSS.getBaseScore(TEST_ENV), 6.8);
         });
     });
 
     describe('#getTemporalScore()', function() { 
-        it('should return 6.8 when given "AV:N/AC:M/Au:N/C:P/I:P/A:P"', function() {
-            assert.equal(CVSS.getTemporalScore("AV:N/AC:M/Au:N/C:P/I:P/A:P"), 6.8);
+        it('should return 6.8 when given "' + TEST_BASE + '"', function() {
+            assert.equal(CVSS.getTemporalScore(TEST_BASE), 6.8);
         });
 
-        it('should return 5.2 when given "AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C"', function() {
-            assert.equal(CVSS.getTemporalScore("AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C"), 5.2);
+        it('should return 5.2 when given "' + TEST_TEMP + '"', function() {
+            assert.equal(CVSS.getTemporalScore(TEST_TEMP), 5.2);
         });
 
-        it('should return 5.2 when given "AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C/CDP:LM/TD:L/CR:M/IR:M/AR:L"', function() {
-            assert.equal(CVSS.getTemporalScore("AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C/CDP:LM/TD:L/CR:M/IR:M/AR:L"), 5.2);
+        it('should return 1.6 when given "' + TEST_ENV + '"', function() {
+            assert.equal(CVSS.getTemporalScore(TEST_ENV), 5.2);
         });
     });
 
     describe('#getEnvironmentalScore()', function() {
-        it('should return 6.8 when given "AV:N/AC:M/Au:N/C:P/I:P/A:P"', function() {
-            assert.equal(CVSS.getEnvironmentalScore("AV:N/AC:M/Au:N/C:P/I:P/A:P"), 6.8);
+        it('should return 6.8 when given "' + TEST_BASE + '"', function() {
+            assert.equal(CVSS.getEnvironmentalScore(TEST_BASE), 6.8);
         });
 
-        it('should return 5.2 when given "AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C"', function() {
-            assert.equal(CVSS.getEnvironmentalScore("AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C"), 5.2);
+        it('should return 5.2 when given "' + TEST_TEMP + '"', function() {
+            assert.equal(CVSS.getEnvironmentalScore(TEST_TEMP), 5.2);
         });
 
-        it('should return 1.6 when given "AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C/CDP:LM/TD:L/CR:M/IR:M/AR:L"', function() {
-            assert.equal(CVSS.getEnvironmentalScore("AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C/CDP:LM/TD:L/CR:M/IR:M/AR:L"), 1.6);
+        it('should return 1.6 when given "' + TEST_ENV + '"', function() {
+            assert.equal(CVSS.getEnvironmentalScore(TEST_ENV), 1.6);
         });
     });
 
@@ -89,8 +92,57 @@ describe('CVSS', function() {
         });
     });
 
-    describe('#getBase()', function() {});
-    describe('#getTemporal()', function() {});
-    describe('#getEnvironmental()', function() {});
-    describe('#getAll()', function() {});
+    describe('#getBase()', function() {
+        it('should return an object matching the expected', function() {
+            let result = CVSS.getBase(TEST_ENV);
+            let expected = {
+                score: 6.8,
+                rating: 'Medium',
+            };
+            assert.deepEqual(result, expected);
+        });
+    });
+
+    describe('#getTemporal()', function() {
+        it('should return an object matching the expected', function() {
+            let result = CVSS.getTemporal(TEST_ENV);
+            let expected = {
+                score: 5.2,
+                rating: 'Medium',
+            };
+            assert.deepEqual(result, expected);
+        });
+    });
+    
+    describe('#getEnvironmental()', function() {
+        it('should return an object matching the expected', function() {
+            let result = CVSS.getEnvironmental(TEST_ENV);
+            let expected = {
+                score: 1.6,
+                rating: 'Low',
+            };
+            assert.deepEqual(result, expected);
+        });
+    });
+    
+    describe('#getAll()', function() {
+        it('should return an object matching the expected', function() {
+            let result = CVSS.getAll(TEST_ENV);
+            let expected = {
+                base: {
+                    score: 6.8,
+                    rating: 'Medium',
+                },
+                temporal: {
+                    score: 5.2,
+                    rating: 'Medium',
+                },
+                environmental: {
+                    score: 1.6,
+                    rating: 'Low',
+                },
+            };
+            assert.deepEqual(result, expected);
+        });
+    });
 });
