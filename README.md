@@ -13,7 +13,9 @@ function signatures to ensure that there is a drop in replacement (also, Aaron
 did a good job on the API design).
 
 # Install
-// TODO
+```js
+npm i cvss2js
+```
 
 # Usage
 ```js
@@ -21,7 +23,11 @@ const cvss = require('cvss2js');
 
 var score = cvss.getScore('AV:N/AC:M/Au:N/C:P/I:P/A:P');
 
+console.log(score); // -> 6.8
+
 var rating = cvss.getRating(score);
+
+console.log(rating); // -> Medium
 ```
 
 
