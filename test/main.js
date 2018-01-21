@@ -5,6 +5,8 @@ const TEST_BASE = "AV:N/AC:M/Au:N/C:P/I:P/A:P";
 const TEST_TEMP = "AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C";
 const TEST_ENV = "AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C/CDP:LM/TD:L/CR:M/IR:M/AR:L";
 
+const TEST_OBJ = {"AV": "N", "AC": "M", "Au":"N", "C":"P", "I":"P", "A":"P"};
+
 describe('CVSS', function() {
     describe('#getScore()', function() {
         it('should return 6.8 when given "' + TEST_BASE + '"', function() {
@@ -19,8 +21,20 @@ describe('CVSS', function() {
             assert.equal(CVSS.getScore(TEST_ENV), 1.6);
         });
 
+        it('should return 6.8 when given "' + TEST_ENV + '" and only wanting Base Score', function() {
+            assert.equal(CVSS.getScore(TEST_ENV, {baseOnly: true}), 6.8);
+        });
+
+        it('should return 5.2 when given "' + TEST_ENV + '" and only wanting Temporal Score', function() {
+            assert.equal(CVSS.getScore(TEST_ENV, {temporal: true}), 5.2);
+        });
+
         it('should throw an exception when given "AV:N/Au:N/A:P"', function() {
             assert.throws(() => { CVSS.getScore("AV:N/Au:N/A:P") }, Error);
+        });
+
+        it('should return 6.8 when given "' + JSON.stringify(TEST_OBJ) + '"', function() {
+            assert.equal(CVSS.getScore(TEST_OBJ), 6.8);
         });
     });
 
@@ -35,6 +49,10 @@ describe('CVSS', function() {
 
         it('should return 1.6 when given "' + TEST_ENV + '"', function() {
             assert.equal(CVSS.getBaseScore(TEST_ENV), 6.8);
+        });
+
+        it('should throw an exception when given "AV:N/Au:N/A:P"', function() {
+            assert.throws(() => { CVSS.getBaseScore("AV:N/Au:N/A:P") }, Error);
         });
     });
 
