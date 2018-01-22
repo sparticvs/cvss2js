@@ -1,6 +1,6 @@
 {
   "name": "cvss2js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CVSSv2 Vector Calculator",
   "main": "index.js",
   "scripts": {
