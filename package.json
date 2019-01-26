@@ -4,7 +4,9 @@
   "description": "CVSSv2 Vector Calculator",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha"
+    "test": "nyc mocha",
+    "lint": "eslint lib/",
+    "lint:fix": "eslint --fix lib/"
   },
   "repository": {
     "type": "git",
