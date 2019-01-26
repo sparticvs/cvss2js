@@ -4,6 +4,7 @@ const assert = require('assert');
 const TEST_BASE = "AV:N/AC:M/Au:N/C:P/I:P/A:P";
 const TEST_TEMP = "AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C";
 const TEST_ENV = "AV:N/AC:M/Au:N/C:P/I:P/A:P/E:U/RL:TF/RC:C/CDP:LM/TD:L/CR:M/IR:M/AR:L";
+const TEST_EDGE_CASE = "AV:L/AC:H/Au:M/C:N/I:N/A:P/CDP:ND/TD:ND/CR:L/IR:L/AR:L";
 
 const TEST_OBJ = {"AV": "N", "AC": "M", "Au":"N", "C":"P", "I":"P", "A":"P"};
 
@@ -35,6 +36,10 @@ describe('CVSS', function() {
 
         it('should return 6.8 when given "' + JSON.stringify(TEST_OBJ) + '"', function() {
             assert.equal(CVSS.getScore(TEST_OBJ), 6.8);
+        });
+
+        it('should return -0.2 when given "' + TEST_EDGE_CASE + '"', function() {
+            assert.equal(CVSS.getScore(TEST_EDGE_CASE), -0.2);
         });
     });
 
@@ -107,6 +112,10 @@ describe('CVSS', function() {
 
         it('should return "Critical" when score is 9', function() {
             assert.equal(CVSS.getRating(9), "Critical");
+        });
+
+        it('should return "Informational" when score is < -0.9', function() {
+            assert.equal(CVSS.getRating(-0.9), "Informational");
         });
     });
 
