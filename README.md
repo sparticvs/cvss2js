@@ -12,6 +12,9 @@ McCall](https://github.com/aaronmccall). This implementation only borrows the
 function signatures to ensure that there is a drop in replacement (also, Aaron
 did a good job on the API design).
 
+# Requirements
+This project now requires a minimum of Node version 8.
+
 # Install
 ```js
 npm i cvss2js
