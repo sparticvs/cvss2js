@@ -21,7 +21,7 @@
   "devDependencies": {
     "eslint": "9.17.0",
     "eslint-config-google": "0.14.0",
-    "mocha": "11.1.0",
+    "mocha": "11.2.2",
     "nyc": "17.1.0"
   }
 }
